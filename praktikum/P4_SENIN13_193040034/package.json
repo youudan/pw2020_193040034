@@ -1,0 +1,18 @@
+{
+  "name": "p4_senin13_193040034",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "sass assets/scss/style.scss assets/css/style.css"
+  },
+  "author": "Wijdan Muhammad R",
+  "license": "ISC"
+}
