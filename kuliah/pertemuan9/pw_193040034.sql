@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 09, 2020 at 06:04 PM
+-- Generation Time: Apr 14, 2020 at 08:12 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.7
 
@@ -43,12 +43,12 @@ INSERT INTO `mahasiswa` (`id`, `nama`, `nrp`, `email`, `jurusan`, `gambar`) VALU
 (1, 'Wijdan Muhammad R', '193040034', '193040034.wijdan@mail.unpas.ac.id', 'Teknik Informatika', '193040034.jpg'),
 (2, 'Agung Gumelar', '193040008', '193040008.agung@mail.unpas.ac.id', 'Teknik Informatika', '193040008.jpg'),
 (3, 'Yusril Ismail Azi', '193040024', '193040008.yusril@mail.unpas.ac.id', 'Teknik Informatika', '193040024.jpg'),
-(4, 'Alwi Ramadhan ', '193040009', '193040009.alwi@mail.unpas.ac.id', 'Teknik Informatika', '193040009.jpg'),
+(4, 'Alwi Ramadhan ', '193040029', '193040009.alwi@mail.unpas.ac.id', 'Teknik Informatika', '193040029.jpg'),
 (5, 'M Rizky Fauzan', '193040014', '193040034.rizky@mail.unpas.ac.id', 'Teknik Informatika', '193040014.jpg'),
 (6, 'M. Fauzan Kamal', '193040031', '193040031.fauzan@mail.unpas.ac.id', 'Teknik Informatika', '193040031.jpg'),
 (7, 'Antasafariq Fikriansyah', '193040030', '193040031.antasafariq@mail.unpas.ac.id', 'Teknik Informatika', '193040030.jpg'),
 (8, 'Daffa Akhdan Fadhilah', '193040036', '193040036.daffa@mail.unpas.ac.id', 'Teknik Informatika', '193040036.jpg'),
-(9, 'Aryogi Aziz', '193040023', '193040023.arogi@mail.unpas.ac.id', 'Teknik Informatika', '193040023.jpg'),
+(9, 'Lamhot Kristopher', '193040007', '193040007.lamhot@mail.unpas.ac.id', 'Teknik Informatika', '193040007.jpg'),
 (10, 'Yanida Nur Nabila Widya Sastra', '193040022', '193040022.yanida@mail.unpas.ac.id', 'Teknik Informatika', '193040022.jpg');
 
 --
