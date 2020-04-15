@@ -13,7 +13,7 @@
   }
   // Query
   function query($sql){
-    $result = mysqli_query(koneksi(), "${sql}");   
+    $result = mysqli_query(koneksi(), "$sql");   
 
     $rows = [];
     while ($row = mysqli_fetch_assoc($result)) {
