@@ -20,3 +20,28 @@ function query($query)
   }
   return $rows;
 }
+
+function tambah($data)
+{
+  $conn = koneksi();
+
+  $nama    = htmlspecialchars($data['nama']);
+  $nrp     = htmlspecialchars($data['nrp']);
+  $jurusan = htmlspecialchars($data['jurusan']);
+  $email   = htmlspecialchars($data['email']);
+  $gambar  = htmlspecialchars($data['gambar']);
+
+  $query = "INSERT INTO 
+             mahasiswa
+            VALUES 
+            (null, '$nama', '$nrp', '$email', '$jurusan', '$gambar')
+           ";
+  mysqli_query($conn, $query);
+  echo mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
+
+function css()
+{
+  echo ' <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">';
+}

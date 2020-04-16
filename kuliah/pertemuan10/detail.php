@@ -2,10 +2,10 @@
 require 'functions.php';
 
 // ambil nrp dari URL
-$nrp = $_GET['nrp'];
+$id = $_GET['id'];
 
 // query mahasiswa berdasarkan nrp
-$mahasiswa = query("SELECT * FROM mahasiswa WHERE nrp = $nrp");
+$mahasiswa = query("SELECT * FROM mahasiswa WHERE id = $id");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +13,7 @@ $mahasiswa = query("SELECT * FROM mahasiswa WHERE nrp = $nrp");
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <?= css(); ?>
   <title>Detail Mahasiswa</title>
 </head>
 
@@ -28,6 +29,9 @@ $mahasiswa = query("SELECT * FROM mahasiswa WHERE nrp = $nrp");
     </li>
     <li><a href="latihan3.php">kembali</a></li>
   </ul>
+  <script>
+    import 'bootstrap/dist/css/bootstrap.min.css';
+  </script>
 </body>
 
 </html>
