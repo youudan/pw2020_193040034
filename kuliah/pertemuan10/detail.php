@@ -24,7 +24,8 @@ $mahasiswa = query("SELECT * FROM mahasiswa WHERE nrp = $nrp");
     <li>Nama : <?= $mahasiswa['nama']; ?></li>
     <li>Email : <?= $mahasiswa['email']; ?></li>
     <li>Jurusan : <?= $mahasiswa['jurusan']; ?></li>
-    <li><a href="">ubah</a> | <a href="">hapus</a></li>
+    <li><a href="">ubah</a> | <a href="">hapus</a`>
+    </li>
     <li><a href="latihan3.php">kembali</a></li>
   </ul>
 </body>
