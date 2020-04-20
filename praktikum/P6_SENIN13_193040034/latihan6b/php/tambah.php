@@ -1,15 +1,19 @@
 <?php
 require 'functions.php';
+
+$kategori = query("SELECT kategori.id, kategori.nama FROM kategori");
 if (isset($_POST['tambah'])) {
 
   if (tambah($_POST) > 0) {
-    echo '<div class="alert alert-success" role="alert">
-            Data berhasil ditambahkan!
-          </div>';
+    echo '<script>
+          alert("Data berhasil ditambah!");
+          document.location.href = "admin.php";
+        </script>';
   } else {
-    echo '<div class="alert alert-danger" role="alert">
-            Data gagal ditambahkan!
-          </div>';
+    echo '<script>
+          alert("Data gagal ditambah!");
+          document.location.href = "admin.php";
+        </script>';
   }
 }
 ?>
@@ -19,8 +23,8 @@ if (isset($_POST['tambah'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <?= css(); ?>
-  <title>Tambah Data Mahasiswa</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <title>Tambah Data Buku</title>
 </head>
 
 <body>
@@ -29,39 +33,44 @@ if (isset($_POST['tambah'])) {
       <div class="col-md-6">
         <div class="card d-flex justify-content-center">
           <div class="card-header">
-            <h3>Tambah Data Mahasiswa</h3>
+            <h3>Tambah Data Buku</h3>
           </div>
           <div class="card-body">
             <form action="" method="POST">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" style="width:80px;" id="namaD">Nama</span>
+                  <span class="input-group-text" style="width:80px;" id="judulD">Judul</span>
                 </div>
-                <input type="text" class="form-control" name="nama" placeholder="Nama" aria-describedby="namaD" required>
+                <input type="text" class="form-control" name="judul" placeholder="Judul" aria-describedby="judulD" required>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" style="width:80px;" id="nrpD">NRP</span>
+                  <span class="input-group-text" style="width:80px;" id="authorD">Author</span>
                 </div>
-                <input type="text" class="form-control" name="nrp" placeholder="NRP" aria-describedby="nrpD" required>
+                <input type="text" class="form-control" name="author" placeholder="Author" aria-describedby="authorD" required>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" style="width:80px;" id="emailD">Email</span>
+                  <span class="input-group-text" style="width:80px;" id="penerbitD">Penerbit</span>
                 </div>
-                <input type="text" class="form-control" name="email" placeholder="Email" aria-describedby="emailD" required>
+                <input type="text" class="form-control" name="penerbit" placeholder="Penerbit" aria-describedby="emailpenerbitDD" required>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" style="width:80px;" id="jurusanD">Jurusan</span>
+                  <span class="input-group-text" style="width:80px;" id="coverD">Cover</span>
                 </div>
-                <input type="text" class="form-control" name="jurusan" placeholder="Jurusan" aria-describedby="jurusanD" required>
+                <input type="text" class="form-control" name="cover" placeholder="Cover" aria-describedby="coverD" required>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" style="width:80px;" id="gambarD">Gambar</span>
+                  <span class="input-group-text" style="width:80px;" id="kategoriD">Kategori</span>
                 </div>
-                <input type="text" class="form-control" name="gambar" placeholder="Gambar" aria-describedby="gambarD" required>
+                <select class="form-control" name="kategori" aria-describedby="kategoriD" required>
+                  <option value="" disabled selected>Pilih Kategori</option>
+                  <?php foreach ($kategori as $k) : ?>
+                    <option value="<?= $k['id']; ?>"><?= $k['nama']; ?></option>
+                  <?php endforeach; ?>
+                </select>
               </div>
               <!-- <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -76,13 +85,13 @@ if (isset($_POST['tambah'])) {
             </form>
           </div>
         </div>
-        <a class="btn btn-secondary mt-3" href="latihan3.php">&laquo; kembali</a>
+        <a class="btn btn-secondary mt-3" href="admin.php">&laquo; kembali</a>
       </div>
     </div>
   </div>
 
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script>
     $(document).ready(function() {
       console.log("ready!");

@@ -44,8 +44,8 @@ $mahasiswa = query("SELECT * FROM mahasiswa WHERE id = $id");
               </div>
             </div>
           </div>
-          <a class="btn btn-secondary mt-3" href="latihan3.php">&laquo; kembali</a>
         </div>
+        <a class="btn btn-secondary mt-3" href="latihan3.php">&laquo; kembali</a>
       </div>
     </div>
   </div>
