@@ -56,7 +56,7 @@ if (isset($_POST['cari'])) {
           <tr>
             <th scope="row"><?= $no; ?></th>
             <td> <img src="img/<?= $m['gambar']; ?>" class="mr-3 mb-2" width="64px"></td>
-            <td><?= $m['nama']; ?>"</td>
+            <td><?= $m['nama']; ?></td>
             <td>
               <a class="btn btn-success float-right" href="detail.php?id=<?= $m['id']; ?>">Detail</a>
             </td>
