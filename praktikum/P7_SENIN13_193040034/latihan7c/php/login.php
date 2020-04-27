@@ -95,7 +95,7 @@ if (isset($_POST['login'])) {
             </form>
           </div>
         </div>
-        <a class="btn btn-secondary mt-3" href="index.php">&laquo; kembali</a>
+        <a class="btn btn-secondary mt-3" href="../index.php">&laquo; kembali</a>
 
       </div>
     </div>
