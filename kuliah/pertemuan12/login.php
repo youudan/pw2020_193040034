@@ -1,19 +1,18 @@
 <?php
+session_start();
+
+if (isset($_SESSION['login'])) {
+  header("Location: index.php");
+  exit;
+}
+
 require 'functions.php';
 
 
-if (isset($_POST['register'])) {
 
-  if (registrasi($_POST) > 0) {
-    echo '<script>
-          alert("Registrasi berhasil!");
-          document.location.href = "login.php";
-        </script>';
-  } else {
-    echo '<script>
-          alert("Registrasi gagal!");
-        </script>';
-  }
+if (isset($_POST['login'])) {
+
+  $login = login($_POST);
 }
 ?>
 <!DOCTYPE html>
@@ -22,17 +21,22 @@ if (isset($_POST['register'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <title>Registrasi</title>
+  <?= css(); ?>
+  <title>Login</title>
 </head>
 
 <body>
+  <?php if (isset($login['error'])) : ?>
+    <div class="alert alert-danger" role="alert">
+      <?= $login['pesan']; ?>
+    </div>
+  <?php endif; ?>
   <div class="container mt-5">
     <div class="row justify-content-md-center">
       <div class="col-md-6">
         <div class="card d-flex justify-content-center">
           <div class="card-header">
-            <h3>Registrasi</h3>
+            <h3>Login</h3>
           </div>
           <div class="card-body">
             <form action="" method="POST">
@@ -40,7 +44,7 @@ if (isset($_POST['register'])) {
                 <div class="input-group-prepend">
                   <span class="input-group-text" style="width:90px;">username</span>
                 </div>
-                <input type="text" class="form-control" name="username" placeholder="Username" required>
+                <input type="text" class="form-control" name="username" placeholder="Username" autofocus autocomplete="off" required>
               </div>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -48,11 +52,18 @@ if (isset($_POST['register'])) {
                 </div>
                 <input type="password" class="form-control" name="password" placeholder="Password" required>
               </div>
-              <button type="submit" class="btn btn-success btn-block" name="register">Register</button>
+              <!-- <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                <label class="form-check-label" for="remember">Remember me</label>
+              </div> -->
+              <p><a href="registrasi.php">Tambah user baru</a></p>
+
+              <button type="submit" class="btn btn-primary btn-block" name="login">Login</button>
             </form>
           </div>
         </div>
-        <a class="btn btn-secondary mt-3" href="../index.php">&laquo; kembali</a>
+        <a class="btn btn-secondary mt-3" href="index.php">&laquo; kembali</a>
+
       </div>
     </div>
   </div>
