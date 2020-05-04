@@ -3,7 +3,7 @@
   // Koneksi database
   function koneksi(){
     $conn = mysqli_connect('localhost', 'pw19034', '#Akun#193040034#') or die("koneksi DB gagal");
-    mysqli_select_db($conn, 'pw19034_pw_193040034' or die("database tidak ditemukan");
+    mysqli_select_db($conn, 'pw19034_pw_193040034') or die("database tidak ditemukan");
     return $conn;
   }
   // Query
@@ -17,5 +17,3 @@
 
     return $rows;
   }
-
-?>
