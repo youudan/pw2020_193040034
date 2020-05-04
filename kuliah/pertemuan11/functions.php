@@ -1,7 +1,7 @@
 <?php
 function koneksi()
 {
-  return mysqli_connect('localhost', 'root', 'root', 'pw_193040034');
+  return mysqli_connect('localhost', 'pw19034', '#Akun#193040034#', 'pw19034_pw_193040034');
 }
 
 function query($query)
