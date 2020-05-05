@@ -1,7 +1,11 @@
 <?php
 require "Database.php";
 
+
+
+
 if (isset($_GET['ep']) && $_GET['ep']) {
+
   switch ($_GET['ep']) {
     case 'semua-alat-musik':
       if (isset($_GET['limit']) && $_GET['limit']) {
@@ -23,14 +27,6 @@ if (isset($_GET['ep']) && $_GET['ep']) {
        ");
       }
 
-      $json = [
-        "status" => "success",
-        "message" => "alat musik",
-        "data" => [
-          "alat_musik" => $alat_musik
-        ]
-      ];
-      echo json_encode($json);
       break;
     case 'semua-alat-musik-sampah':
 
@@ -41,19 +37,36 @@ if (isset($_GET['ep']) && $_GET['ep']) {
           WHERE am.deleted_at IS NOT NULL
          ");
 
-      $json = [
-        "status" => "success",
-        "message" => "alat musik",
-        "data" => [
-          "alat_musik" => $alat_musik
-        ]
-      ];
-      echo json_encode($json);
       break;
     default:
       # code...
       break;
   }
+  $data = [];
+  foreach ($alat_musik as $am) {
+    $data[] = [
+      'nama' => $am['nama'],
+      'slug' => $am['slug'],
+      'merk' => $am['merk'],
+      'gambar' => $am['gambar'],
+      'deskripsi' => $am['deskripsi'],
+      'created_at' => $am['created_at'],
+      'jenis' => $am['jenis'],
+      'tag' => $am['tag'],
+      'nama_user' => $am['nama_user'],
+      'profile' => $am['profile']
+    ];
+  }
+
+  $json = [
+    "status" => "success",
+    "message" => "alat musik",
+    "data" => [
+      "alat_musik" => $data
+    ]
+  ];
+
+  echo json_encode($json);
 } else {
   echo "endpoint tidak valid";
 }
