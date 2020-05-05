@@ -1,7 +1,7 @@
 <?php
 require "app/Database.php";
 if (!isset($_GET['slug'])) {
-  header("Location: admin.php");
+  echo '<META HTTP-EQUIV="Refresh" Content="0; URL=admin.php">';
 }
 
 $slug = $_GET['slug'];
