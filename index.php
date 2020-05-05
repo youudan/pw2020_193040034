@@ -192,7 +192,10 @@
       <div class="columns">
         <div class="column">
           <h3 class="title title-profile">Tugas Besar</h3>
-          <p>Masih dalam tahap pengerjaan.
+          <p>Tekan tombol dibawah untuk menuju <strong>Tugas Besar</strong>.</p>
+          <a class="button is-primary" href="tubes/">
+            <strong>Tugas Besar</strong>
+          </a>
         </div>
         <div class="column">
           <figure class="image" style="width:400px;">
