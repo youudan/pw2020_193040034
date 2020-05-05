@@ -3,7 +3,7 @@ require "Database.php";
 
 
 if (isset($_SESSION['login'])) {
-  Header('Location: admin.php');
+  echo '<META HTTP-EQUIV="Refresh" Content="0; URL=admin.php">';
   exit;
 }
 
