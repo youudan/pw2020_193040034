@@ -3,7 +3,7 @@ require "Database.php";
 
 
 if (isset($_SESSION['login'])) {
-  header('Location: admin.php');
+  Header('Location: admin.php');
   exit;
 }
 

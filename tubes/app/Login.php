@@ -14,7 +14,7 @@ if (isset($_COOKIE['token'])) {
     $_SESSION['profile'] = $result['profile'];
     $_SESSION['email']   = $result['email'];
     $_SESSION['role']    = $result['role'];
-    header("Location: admin.php");
+    echo '<META HTTP-EQUIV="Refresh" Content="0; URL=admin.php">';
     exit;
   }
 }
@@ -42,7 +42,7 @@ if (isset($_POST['loginSubmit'])) {
         setcookie('token', hash('sha256', $result['user']['id']), time() + 60 * 60 * 24);
         setcookie('email', $result['user']['email'], time() + 60 * 60 * 24);
       }
-      header('Location: admin.php');
+      echo '<META HTTP-EQUIV="Refresh" Content="0; URL=admin.php">';
       exit;
     }
   }
