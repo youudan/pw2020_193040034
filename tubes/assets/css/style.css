@@ -1,0 +1,25 @@
+.paralax-title {
+  font-family: 'Lobster', cursive;
+  font-weight: 100;
+}
+
+.parallax {
+  /* The image used */
+  background-image: url("../img/violin-bg.jpeg");
+
+  /* Set a specific height */
+  height: 200px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .parallax {
+    height: 500px;
+  }
+}
