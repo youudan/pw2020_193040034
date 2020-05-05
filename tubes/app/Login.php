@@ -20,7 +20,7 @@ if (isset($_COOKIE['token'])) {
 }
 
 if (isset($_SESSION['login'])) {
-  header('Location: admin.php');
+  echo '<META HTTP-EQUIV="Refresh" Content="0; URL=admin.php">';
   exit;
 }
 
@@ -32,7 +32,6 @@ if (isset($_POST['loginSubmit'])) {
   $result = login($email);
   if ($result['check'] === 1) {
     if (password_verify($password, $result['user']['password'])) {
-      echo "SUKSES";
       $_SESSION['login']   = true;
       $_SESSION['user_id'] = $result['user']['id'];
       $_SESSION['nama']    = $result['user']['nama'];
