@@ -42,27 +42,12 @@ if (isset($_GET['ep']) && $_GET['ep']) {
       # code...
       break;
   }
-  $data = [];
-  foreach ($alat_musik as $am) {
-    $data[] = [
-      'nama' => $am['nama'],
-      'slug' => $am['slug'],
-      'merk' => $am['merk'],
-      'gambar' => $am['gambar'],
-      'deskripsi' => $am['deskripsi'],
-      'created_at' => $am['created_at'],
-      'jenis' => $am['jenis'],
-      'tag' => $am['tag'],
-      'nama_user' => $am['nama_user'],
-      'profile' => $am['profile']
-    ];
-  }
 
   $json = [
     "status" => "success",
     "message" => "alat musik",
     "data" => [
-      "alat_musik" => $data
+      "alat_musik" => $alat_musik
     ]
   ];
 
