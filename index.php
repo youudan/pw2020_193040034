@@ -136,7 +136,7 @@
             </p>
 
 
-            <?php for ($no = 9; $no <= 12; $no++) : ?>
+            <?php for ($no = 9; $no <= 13; $no++) : ?>
               <a class="panel-block is-active" href="kuliah/pertemuan<?= $no; ?>" target="_blank">
                 <span class="panel-icon">
                   <i class="fas fa-book" aria-hidden="true"></i>
