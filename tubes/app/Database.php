@@ -1,6 +1,9 @@
 <?php
 function koneksi()
 {
+  // local
+  // return mysqli_connect('localhost', 'root', 'root', 'tubes_193040034');
+  // hosting
   return mysqli_connect('localhost', 'pw19034', '#Akun#193040034#', 'pw19034_tubes_193040034');
 }
 
