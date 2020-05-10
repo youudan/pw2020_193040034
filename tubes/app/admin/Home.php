@@ -95,7 +95,6 @@
 <script src="assets/js/bulma.js"></script>
 <!-- development version, includes helpful console warnings -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
   Vue.filter('fm-truncate', function(value, length) {
     if (!value) return ''
@@ -131,17 +130,6 @@
         if (!this.sort.field) {
           return this.hasilQuery
         }
-
-        // if (this.sort.field === 'created_at') {
-        //   return this.hasilQuery.concat().sort((a, b) => {
-        //     if (this.sort.desc) {
-
-        //       return new Date(a[this.sort.field]) > new Date(b[this.sort.field]) ? -1 : 1
-        //     } else {
-        //       return new Date(a[this.sort.field]) > new Date(b[this.sort.field]) ? 1 : -1
-        //     }
-        //   })
-        // }
         return this.hasilQuery.concat().sort((a, b) => {
           if (this.sort.desc) {
             return a[this.sort.field] > b[this.sort.field] ? -1 : 1
@@ -163,14 +151,7 @@
     }
   })
 
-  axios.get('app/api.php?ep=semua-alat-musik')
-    .then(function(response) {
-      let {
-        data
-      } = response.data;
-      app.alatMusik = data.alat_musik
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
+  fetch('app/api.php?ep=semua-alat-musik')
+    .then(response => response.json())
+    .then(data => app.alatMusik = data.data.alat_musik);
 </script>
