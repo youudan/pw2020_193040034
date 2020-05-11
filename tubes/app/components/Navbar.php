@@ -45,7 +45,7 @@
                 </a>
               <?php else : ?>
                 <a class="navbar-item" href="admin.php">
-                  Halaman Admin
+                  Halaman <?= ucfirst($_SESSION['role']); ?>
                 </a>
               <?php endif; ?>
               <a class="navbar-item" href="admin.php?site=profile">
