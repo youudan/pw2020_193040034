@@ -73,6 +73,7 @@ if (isset($_POST['signUpSubmit'])) {
                   </button>
                 </p>
               </div>
+              <p class="has-text-left">Sudah mempunyai akun? login <a href="index.php?site=login">disini</a></p>
             </form>
           </div>
         </div>

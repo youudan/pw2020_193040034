@@ -100,7 +100,10 @@ if (isset($_POST['loginSubmit'])) {
                   </button>
                 </p>
               </div>
+              <p class="has-text-left">Belum mempunyai akun? klik <a href="index.php?site=signup">disini</a></p>
             </form>
+
+
           </div>
         </div>
       </div>
