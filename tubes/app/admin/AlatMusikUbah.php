@@ -9,7 +9,7 @@ $am = query("SELECT * FROM alat_musik WHERE slug='$slug'");
 $jenis_alat_musik = query("SELECT jam.id, jam.jenis, jam.deskripsi FROM jenis_alat_musik jam");
 
 if (isset($_POST['ubah'])) {
-  if (ubahAlatMusik($_POST, $_FILES) > 0) {
+  if (ubahAlatMusik($_POST) > 0) {
     echo '<script>
             alert("data berhasil diubah!");
             document.location.href = "admin.php";

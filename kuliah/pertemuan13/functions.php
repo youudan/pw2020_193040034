@@ -32,9 +32,6 @@ function upload()
 
   // ketika tidak ada gamabr yang dipilih
   if ($error === 4) {
-    // echo '<script>
-    //         alert("pilih gambar terlebih dahulu!");
-    //       </script>';
     return 'nophoto.jpg';
   }
 

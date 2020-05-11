@@ -2,9 +2,9 @@
 function koneksi()
 {
   // local
-  // return mysqli_connect('localhost', 'root', 'root', 'tubes_193040034');
+  return mysqli_connect('localhost', 'root', 'root', 'tubes_193040034');
   // hosting
-  return mysqli_connect('localhost', 'pw19034', '#Akun#193040034#', 'pw19034_tubes_193040034');
+  // return mysqli_connect('localhost', 'pw19034', '#Akun#193040034#', 'pw19034_tubes_193040034');
 }
 
 function query($query)
@@ -24,19 +24,18 @@ function query($query)
   return $rows;
 }
 
-function tambahAlatMusik($data, $file)
+function tambahAlatMusik($data)
 {
 
   $conn = koneksi();
 
   $nama      = htmlspecialchars($data['nama']);
-  $slug      = slugify($data['nama'] . date("-Y-m-d"));
+  $slug      = slugify($data['nama'] . date("-Y-m-d-m-s"));
   $merk      = htmlspecialchars($data['merk']);
   $deskripsi = htmlspecialchars($data['deskripsi']);
   $jenis_id  = htmlspecialchars($data['jenis']);
   $user_id   = $_SESSION['user_id'];
-  $file['gambarLama'] = '';
-  $gambar    = upload($file);
+  $gambar    = upload('storage/img/alat-musik/');
   if (!$gambar) {
     return false;
   }
@@ -49,13 +48,13 @@ function tambahAlatMusik($data, $file)
   return mysqli_affected_rows($conn);
 }
 
-function ubahAlatMusik($data, $file)
+function ubahAlatMusik($data)
 {
 
   $conn = koneksi();
   $id        = $data['id'];
   $nama      = htmlspecialchars($data['nama']);
-  $slug      = slugify($data['nama'] . date("-Y-m-d"));
+  $slug      = slugify($data['nama'] . date("-Y-m-d-m-s"));
   $merk      = htmlspecialchars($data['merk']);
   $deskripsi = htmlspecialchars(str_replace("'", "\'", $data['deskripsi']));
   $jenis_id  = htmlspecialchars($data['jenis']);
@@ -63,13 +62,13 @@ function ubahAlatMusik($data, $file)
   $user_id   = $_SESSION['user_id'];
   // check pilih gambar baru / tidak
   $gambarLama  = htmlspecialchars($data['gambarLama']);
-  if ($file['gambar']['error']  === 4) {
+  $path = 'storage/img/alat-musik/';
+  $gambar = upload($path);
+  if ($gambar == 'nophoto.png') {
     $gambar = $gambarLama;
   } else {
-    $file['gambarLama'] =  $gambarLama;
-    $gambar = upload($file);
+    unlink($path . $gambarLama);
   }
-
   $query = "UPDATE alat_musik
             SET 
             nama = '$nama', 
@@ -118,7 +117,7 @@ function hapusAlatMusikPermanen($slug)
   $conn = koneksi();
   $result = query("SELECT * FROM alat_musik WHERE slug='$slug'");
 
-  if ($result['gambar'] > 0) {
+  if ($result['gambar'] != 'nophoto.png') {
     unlink('storage/img/alat-musik/' . $result['gambar']);
   }
 
@@ -127,29 +126,34 @@ function hapusAlatMusikPermanen($slug)
   return mysqli_affected_rows($conn);
 }
 
-function upload($file)
+
+function upload($path)
 {
-  $namaFile   = $file['gambar']['name'];
-  $ukuranFile = $file['gambar']['size'];
-  $error      = $file['gambar']['error'];
-  $tmpName    = $file['gambar']['tmp_name'];
-  $namaFileLama = $file['gambarLama'];
+  $nama_file   = $_FILES['gambar']['name'];
+  $tipe_file   = $_FILES['gambar']['type'];
+  $ukuran_file = $_FILES['gambar']['size'];
+  $error       = $_FILES['gambar']['error'];
+  $tmp_file    = $_FILES['gambar']['tmp_name'];
 
-  // check apabila tidak ada gambar yang di upload
-
+  // ketika tidak ada gamabr yang dipilih
   if ($error === 4) {
+    return 'nophoto.png';
+  }
+
+  // check file yang diupload gambar
+  $daftar_gambar = ['jpg', 'jpeg', 'png'];
+  $ekstensi_file = explode('.', $nama_file);
+  $ekstensi_file = strtolower(end($ekstensi_file));
+
+  if (!in_array($ekstensi_file, $daftar_gambar)) {
     echo '<script>
-            alert("pilih gambar terlebih dahulu!");
+            alert("yang anda upload bukan gambar!");
           </script>';
     return false;
   }
 
-  // check file yang diupload gambar
-  $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
-  $ekstensiGambar = explode('.', $namaFile);
-  $ekstensiGambar = strtolower(end($ekstensiGambar));
-
-  if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+  // check tipe file
+  if ($tipe_file != 'image/jpeg' && $tipe_file != 'image/png') {
     echo '<script>
             alert("yang anda upload bukan gambar!");
           </script>';
@@ -157,20 +161,22 @@ function upload($file)
   }
 
   // Check ukuran gambar
-  if ($ukuranFile > 1000000) {
+  // maksimal 5mb
+  if ($ukuran_file > 5000000) {
     echo '<script>
-            alert("ukuran gambar terlalu besar!");
-          </script>';
+              alert("ukuran gambar terlalu besar!");
+            </script>';
     return false;
   }
-  if ($namaFileLama > 0) {
-    unlink('storage/img/alat-musik/' . $namaFileLama);
-  }
-  //lolos pengecekan
-  $namaFileBaru = uniqid() . '.' . $ekstensiGambar;
-  move_uploaded_file($tmpName, 'storage/img/alat-musik/' . $namaFileBaru);
 
-  return $namaFileBaru;
+  // lolos pengecekan 
+  // siap upload file
+  // generate nama file baru
+  $nama_file_baru = uniqid();
+  $nama_file_baru .= '.';
+  $nama_file_baru .= $ekstensi_file;
+  move_uploaded_file($tmp_file, $path . $nama_file_baru);
+  return $nama_file_baru;
 }
 
 function slugify($string)
@@ -204,7 +210,7 @@ function signUp($data)
         </script>';
   }
 
-  // jika username sudah ada
+  // jika email sudah ada
   if (query("SELECT * FROM users WHERE email='$email' ")) {
     echo '<script>
           alert("email sudah terdaftar!");
@@ -232,7 +238,45 @@ function signUp($data)
   // enkripsi password
   $password_baru = password_hash($password1, PASSWORD_DEFAULT);
   // insert ke tabel user
-  $query = "INSERT INTO users VALUE (null, '$nama', 'user.png', '$email', '$password_baru', 'user', NOW())";
+  $query = "INSERT INTO users VALUE (null, '$nama', 'nophoto.png', '$email', '$password_baru', 'user', NOW())";
+  mysqli_query($conn, $query) or die(mysqli_error($conn));
+  return mysqli_affected_rows($conn);
+}
+
+function ubahProfile($data)
+{
+  $conn = koneksi();
+  $id = $_SESSION['user_id'];
+  $nama = htmlspecialchars(strtolower($data['nama']));
+  $email = htmlspecialchars(strtolower($data['email']));
+  $gambarLama = htmlspecialchars(strtolower($data['gambarLama']));
+
+  // jika form tidak diisi
+  if (empty($nama) || empty($email)) {
+    echo '<script>
+            alert("form tidak boleh ada yang kosong!");
+            document.location.href = "admin.php?site=profile";
+          </script>';
+  }
+
+  // jika email sudah ada
+  if (query("SELECT * FROM users WHERE email='$email' ") && $_SESSION['email'] != $email) {
+    echo '<script>
+          alert("email sudah terdaftar!");
+          document.location.href = "admin.php?site=profile";
+        </script>';
+  }
+
+  $path = 'storage/img/profile/';
+  $gambar = upload($path);
+  if ($gambar == 'nophoto.png') {
+    $gambar = $gambarLama;
+  } else {
+    $_SESSION['profile'] = $gambar;
+    unlink($path . $gambarLama);
+  }
+
+  $query = "UPDATE users SET nama='$nama', profile='$gambar', email='$email'";
   mysqli_query($conn, $query) or die(mysqli_error($conn));
   return mysqli_affected_rows($conn);
 }

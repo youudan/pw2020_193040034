@@ -1,16 +1,18 @@
 <?php
 require "app/Database.php";
 
-$jenis_alat_musik = query("SELECT jam.id, jam.jenis, jam.deskripsi FROM jenis_alat_musik jam");
-if (isset($_POST['tambah'])) {
-  if (tambahAlatMusik($_POST) > 0) {
+$id = $_SESSION['user_id'];
+$user = query("SELECT * FROM users WHERE id=$id");
+
+if (isset($_POST['profile'])) {
+  if (ubahProfile($_POST) > 0) {
     echo '<script>
-            alert("data berhasil ditambahkan!");
-            document.location.href = "admin.php";
+            alert("data profile berhasil diubah!");
+            document.location.href = "admin.php?site=profile";
           </script>';
   } else {
     echo '<script>
-            alert("data gagal ditambahkan!");
+            alert("data profile tidak diubah!");
           </script>';
   }
 }
@@ -26,6 +28,7 @@ if (isset($_POST['tambah'])) {
       </div>
       <div class="column">
 
+
         <section class="section">
           <div class="container is-fluid has-text-centered">
             <div class="columns is-centered">
@@ -33,25 +36,21 @@ if (isset($_POST['tambah'])) {
                 <div class="box has-text-left">
                   <form action="" method="post" enctype="multipart/form-data">
                     <div class="field">
-                      <label class="label">Nama alat musik</label>
+                      <label class="label">Nama</label>
                       <div class="control has-icons-left has-icons-right">
-                        <input class="input" type="text" placeholder="Nama alat musik" name="nama" value="">
+                        <input class="input" type="text" placeholder="Nama " name="nama" value="<?= $user['nama']; ?>">
                         <span class="icon is-small is-left">
-                          <i class="fas fa-music"></i>
+                          <i class="fas fa-user"></i>
                         </span>
-                        <!-- <span class="icon is-small is-right">
-                        <i class="fas fa-check"></i>
-                      </span> -->
                       </div>
-                      <!-- <p class="help is-success">This username is available</p> -->
                     </div>
 
                     <div class="field">
                       <label class="label">Merk</label>
                       <div class="control has-icons-left has-icons-right">
-                        <input class="input" type="text" placeholder="Merk alat musik" name="merk" value="">
+                        <input class="input" type="text" placeholder="Email" name="email" value="<?= $user['email']; ?>">
                         <span class="icon is-small is-left">
-                          <i class="fas fa-tag"></i>
+                          <i class="fas fa-envelope"></i>
                         </span>
                         <!-- <span class="icon is-small is-right">
                         <i class="fas fa-check"></i>
@@ -61,9 +60,10 @@ if (isset($_POST['tambah'])) {
                     </div>
 
                     <div class="field">
+                      <input type="hidden" name="gambarLama" value="<?= $user['profile']; ?>">
                       <label class="label">Gambar</label>
                       <figure class="image is-128x128">
-                        <img class="img-preview" src="storage/img/alat-musik/nophoto.png">
+                        <img class="img-preview" src="storage/img/profile/<?= $user['profile']; ?>">
                       </figure>
                       <br>
                       <div class="control has-icons-left has-icons-right">
@@ -78,35 +78,11 @@ if (isset($_POST['tambah'])) {
                       <!-- <p class="help is-success">This username is available</p> -->
                     </div>
 
-
-                    <div class="field">
-                      <label class="label">Jenis</label>
-                      <div class="control">
-                        <div class="select">
-                          <select name="jenis">
-                            <option disabled selected>-- Pilih Jenis --</option>
-                            <?php foreach ($jenis_alat_musik as $jam) : ?>
-                              <option value="<?= $jam['id']; ?>"><?= $jam['jenis']; ?></option>
-                            <?php endforeach; ?>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="field">
-                      <label class="label">Deskripsi</label>
-                      <div class="control">
-                        <textarea class="textarea" placeholder="Deskripsi alat musik" name="deskripsi"></textarea>
-                      </div>
-                    </div>
-
                     <div class="field is-grouped">
                       <div class="control">
-                        <button class="button is-link" type="submit" name="tambah">Tambah</button>
+                        <button class="button is-link" type="submit" name="profile">Simpan</button>
                       </div>
-                      <div class="control">
-                        <a class="button is-link is-light" href="admin.php">Kembali</a>
-                      </div>
+
                     </div>
                   </form>
                 </div>
@@ -124,4 +100,3 @@ if (isset($_POST['tambah'])) {
 
 <script src="assets/js/bulma.js"></script>
 <script src="assets/js/script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

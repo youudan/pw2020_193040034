@@ -67,7 +67,7 @@
                       <span class="tag" :class="am.tag">{{ am.jenis }}</span>
                       <div class="is-pulled-right" style="margin-top: 1rem">
                         <a :href="`admin.php?site=alat-musik-ubah&slug=${ am.slug }`" class="button is-success">Ubah</a>
-                        <a :href="`admin.php?site=alat-musik-hapus&slug=${ am.slug }`" class="button is-danger" onclick="return confirm('Yakin?')">Hapus</a>
+                        <a :href="`admin.php?site=alat-musik-hapus&slug=${ am.slug }`" class="button is-danger" onclick="return confirm('Anda akan menghapus data ini?')">Hapus</a>
                       </div>
                     </div>
 

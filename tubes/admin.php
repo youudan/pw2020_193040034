@@ -31,6 +31,9 @@ if (!isset($_SESSION['login'])) {
     require "app/admin/Home.php";
   } else {
     switch ($_GET['site']) {
+      case 'profile':
+        require "app/admin/Profile.php";
+        break;
       case 'alat-musik-tambah':
         require "app/admin/AlatMusikTambah.php";
         break;
