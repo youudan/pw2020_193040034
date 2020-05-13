@@ -119,7 +119,7 @@
         </div>
         <div class="column">
           <h3 class="title title-profile">Wijdan Muhammad Ridwanulloh</h3>
-          <p>Saya adalah seorang mahasiswa <strong>Teknik Informatika</strong> yang sedang menempuh pendidikan di <strong>Universitas Pasundan</strong>. Saya juga adalah seorang <strong>Tech Entusiast</strong> yang suka mengikuti perkembangan teknologi saat ini.</p>
+          <p>Saya adalah seorang mahasiswa <strong>Teknik Informatika</strong> yang sedang menempuh pendidikan di <strong>Universitas Pasundan</strong>. Saya juga adalah seorang <strong>Tech Enthusiast</strong> yang suka mengikuti perkembangan teknologi saat ini.</p>
         </div>
       </div>
     </div>
