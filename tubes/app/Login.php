@@ -49,7 +49,10 @@ if (isset($_POST['loginSubmit'])) {
 
   $error = true;
 }
+$halaman = 'login';
 ?>
+
+<?php require "components/Navbar.php"; ?>
 <?php if (isset($error)) : ?>
   <div class="notification is-danger is-light">
     <button class="delete"></button>

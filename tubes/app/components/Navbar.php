@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar" role="navigation" aria-label="main navigation" style="height: 70px">
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="#">
@@ -10,7 +10,6 @@
         <span aria-hidden="true"></span>
       </a>
     </div>
-
 
     <div id="navbarBasicExample" class="navbar-menu">
       <?php if (!isset($halaman)) : ?>
@@ -25,7 +24,26 @@
         </div>
       <?php endif; ?>
 
+      <?php if (isset($halaman) && $halaman == 'alat-musik') : ?>
+        <div class="navbar-start">
+          <a class="navbar-item" href="?">
+            Home
+          </a>
 
+          <a class="navbar-item" href="index.php?site=alat-musik">
+            Alat Musik
+          </a>
+        </div>
+        <div class="field is-horizontal" style="margin-top: 15px">
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-loading">
+                <input class="input" type="text" placeholder="Pencarian berdasarkan nama" v-model="keyword" size="60" autocomplete="off" autofocus>
+              </p>
+            </div>
+          </div>
+        </div>
+      <?php endif; ?>
 
       <?php if (isset($_SESSION['login'])) : ?>
         <div class="navbar-end">
@@ -53,6 +71,16 @@
               </a>
               <a class="navbar-item" href="admin.php?site=logout">
                 Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      <?php elseif (isset($halaman) && $halaman == 'login' || isset($halaman) && $halaman == 'signup') : ?>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-light" href="index.php?">
+                Kembali
               </a>
             </div>
           </div>

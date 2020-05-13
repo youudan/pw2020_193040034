@@ -1,33 +1,41 @@
-<?php require "components/Navbar.php"; ?>
-
 <div id="app">
+  <?php
+  $halaman = 'alat-musik';
+  require "components/Navbar.php";
+  ?>
   <section class="section">
     <div class="container ">
-      <div class="box">
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li>
+            <a href="index.php?">
+              <span class="icon is-small">
+                <i class="fas fa-home" aria-hidden="true"></i>
+              </span>
+              <span>Home</span>
+            </a>
+          </li>
+
+          <li class="is-active">
+            <a href="#">
+              <span class="icon is-small">
+                <i class="fas fa-music" aria-hidden="true"></i>
+              </span>
+              <span>Alat Musik</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="">
         <div class="columns">
-          <div class="column is-8 is-12-mobile">
-            <div class="field is-horizontal">
-              <div class="field-label is-normal">
-                <label class="label">Pencarian </label>
-              </div>
-              <div class="field-body">
-                <div class="field">
-                  <p class="control is-loading">
-                    <input class="input" type="email" placeholder="Pencarian berdasarkan nama" v-model="keyword">
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="column is-12-mobile">
-            <div class="field is-horizontal">
+            <div class="field-body">
               <div class="field-label is-normal">
                 <label class="label">Filter </label>
               </div>
-              <div class="field-body">
-                <a class="button is-dark" @click="doSort('nama')">Nama<span v-if="sort.field=='nama'">&nbsp;[{{ sort.desc? 'Z-A' : 'A-Z' }}]</span></a>
-                <a class="button is-dark" style="margin-left: 1rem" @click="doSort('created_at')">Tanggal<span v-if="sort.field=='created_at'">&nbsp;[{{ sort.desc? 'Terbaru' : 'Terlama' }}]</span></a>
-              </div>
+              <a class="button is-dark" @click="doSort('nama')">Nama<span v-if="sort.field=='nama'">&nbsp;[{{ sort.desc? 'Z-A' : 'A-Z' }}]</span></a>
+              <a class="button is-dark" style="margin-left: 1rem" @click="doSort('created_at')">Tanggal<span v-if="sort.field=='created_at'">&nbsp;[{{ sort.desc? 'Terbaru' : 'Terlama' }}]</span></a>
             </div>
           </div>
         </div>

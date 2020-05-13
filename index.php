@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="tubes/assets/img/favicon.ico" sizes="16x16">
   <title>193040034</title>
   <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
@@ -74,12 +75,12 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
+              <!-- <a class="button is-primary">
                 <strong>Sign up</strong>
               </a>
               <a class="button is-light">
                 Log in
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
@@ -192,6 +193,13 @@
       <div class="columns">
         <div class="column">
           <h3 class="title title-profile">Tugas Besar</h3>
+          Untuk melihat semua fitur pada halaman admin silahkan gunakan akun dengan
+          <br><br>
+          <strong>Email</strong> : admin@email.test
+          <strong>Password</strong> : admin
+          <hr>
+          <br>
+          dikarenakan saya menambahkan fitur <strong>hak akses</strong> berbeda untuk akun yang dibuat dari Register
           <p>Tekan tombol dibawah untuk menuju <strong>Tugas Besar</strong>.</p>
           <a class="button is-primary" href="tubes/" target="_blank">
             <strong>Tugas Besar</strong>
@@ -228,6 +236,8 @@
           });
         });
       }
+
+
 
     });
   </script>

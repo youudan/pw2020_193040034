@@ -17,7 +17,10 @@ if (isset($_POST['signUpSubmit'])) {
     'Pendaftaran gagal!';
   }
 }
+$halaman = 'signup';
 ?>
+
+<?php require "components/Navbar.php"; ?>
 <?php if (isset($error)) : ?>
   <div class="notification is-danger is-light">
     <button class="delete"></button>
@@ -31,7 +34,7 @@ if (isset($_POST['signUpSubmit'])) {
         <div class="column is-4">
           <div class="box has-text-dark has-text-centered">
             <span class="icon" style="margin-bottom: 2rem">
-              <i class="fas fa-user is-size-1"></i>
+              <i class="fas fa-file-signature is-size-1"></i>
             </span>
             <form action="" method="post">
               <div class="field">

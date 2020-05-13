@@ -7,9 +7,38 @@ $alat_musik = query("SELECT am.nama, am.merk, am.deskripsi, am.gambar, am.create
 
 
 <?php require "components/Navbar.php"; ?>
+
 <div id="app">
-  <section class="section  is-medium">
+  <section class="section">
     <div class="container ">
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li>
+            <a href="index.php?">
+              <span class="icon is-small">
+                <i class="fas fa-home" aria-hidden="true"></i>
+              </span>
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="index.php?site=alat-musik">
+              <span class="icon is-small">
+                <i class="fas fa-music" aria-hidden="true"></i>
+              </span>
+              <span>Alat Musik</span>
+            </a>
+          </li>
+          <li class="is-active">
+            <a href="#">
+              <span class="icon is-small">
+                <i class="fas fa-tag" aria-hidden="true"></i>
+              </span>
+              <span><?= $alat_musik['nama']; ?></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
       <div class="columns">
         <div class="column is-3">
           <figure class="image is-square">
