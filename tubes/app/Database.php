@@ -208,6 +208,7 @@ function signUp($data)
           alert("form tidak boleh ada yang kosong!");
           document.location.href = "index.php?site=signup";
         </script>';
+    return false;
   }
 
   // jika email sudah ada
@@ -216,6 +217,7 @@ function signUp($data)
           alert("email sudah terdaftar!");
           document.location.href = "index.php?site=signup";
         </script>';
+    return false;
   }
 
   // jika konfirmasi password tidak sesuai
@@ -224,6 +226,7 @@ function signUp($data)
         alert("konfirmasi password tidak sesuai!");
         document.location.href = "index.php?site=signup";
       </script>';
+    return false;
   }
 
   // jika password < 5 digit
@@ -232,6 +235,7 @@ function signUp($data)
         alert("password terlalu pendek!");
         document.location.href = "index.php?site=signup";
       </script>';
+    return false;
   }
 
   // jika username dan password sudah sesuai
