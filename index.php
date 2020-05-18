@@ -148,7 +148,7 @@
           </nav>
         </div>
         <div class="column">
-          <figure class="image" style="width:400px;">
+          <figure class="image is-pulled-right" style="width:400px;">
             <img src="assets/img/img-1.png">
           </figure>
         </div>
@@ -206,7 +206,7 @@
           </a>
         </div>
         <div class="column">
-          <figure class="image" style="width:400px;">
+          <figure class="image is-pulled-right" style="width:400px;">
             <img src="assets/img/img-3.png">
           </figure>
         </div>
